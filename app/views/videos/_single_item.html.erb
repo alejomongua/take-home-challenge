@@ -1,0 +1,19 @@
+<div class="relative m-4 rounded border border-black p-1">
+    <%= link_to video_path(id: video['_id']), class: 'z-0' do %>
+        <div class='w-72'>
+            <%= thumbnail(video) %>
+        </div>
+        <p class='w-72 h-12 italic'><%= video['title'] %></p>
+        <p class='text-sm w-72 h-12 font-light'><%= truncate(video['description'], separator: ' ', length: 50) %></p>
+    <% end %>
+    <% if video['subscription_required'] %>
+        <div class="z-10 inset-0 absolute flex flex-wrap justify-start items-start w-72 p-2">
+            <p class="w-72 text-center bg-gray-200">
+                Subscription required
+            </p>
+            <a href="#" class="w-72 text-center bg-gray-200 text-blue-500">
+                Log in to access
+            </a>
+        </div>
+    <% end %>
+</div>

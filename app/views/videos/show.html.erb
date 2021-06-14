@@ -1,2 +1,19 @@
-<h1>Videos#show</h1>
-<p>Find me in app/views/videos/show.html.erb</p>
+<h1 class="text-2xl font-bold">
+    <%= @video['title'] %>
+</h1>
+
+<div class="w-96 mx-auto">
+    <%= player(@video) %>
+</div>
+
+<% if @video['description'] %>
+    <h3 class="text-lg font-bold">
+        Description
+    </h3>
+    <p class="text-sm font-light">
+        <%= @video['description'] %>
+    </p>
+<% end %>
+
+<div class='h-8'></div>
+<%= link_to 'Back to video list', root_path, class: "text-purple-600" %>

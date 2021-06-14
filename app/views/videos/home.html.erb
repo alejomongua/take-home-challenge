@@ -1,2 +1,43 @@
-<h1>Videos#home</h1>
-<p>Find me in app/views/videos/home.html.erb</p>
+<h1 class='text-4xl'>
+    Welcome to our cool video list
+</h1>
+<h2 class="text-xl">
+The coolest video list on the internet
+</h2>
+
+<% if @logged_in %>
+    <p> To do </p>
+<% else %>
+    Please <a class="text-blue-500 visited:text-purple-600" href="#">log in</a> to access all the videos
+<% end %>
+
+<div class="h-8"></div>
+
+<h3 class='text-xl font-bold'>
+    List of videos
+</h3>
+
+<div class="flex flex-wrap justify-items-center">
+    <% @videos.each do |video| %>
+        <%= render partial: 'videos/single_item', locals: { video: video } %>
+    <% end %>
+</div>
+
+<% if @pagination %>
+    <div class="flex justify-between">
+        <% if @pagination['previous'] %>
+            <%= link_to 'First page', root_path, class: 'font-bold' %>
+            <%= link_to 'Previous page', root_path(page: @pagination['previous']), class: 'font-bold' %>
+        <% else %>
+            <div></div>
+            <div></div>
+        <% end %>
+        <% if @pagination['next'] %>
+            <%= link_to 'Next page', root_path(page: @pagination['next']), class: 'font-bold' %>
+            <%= link_to 'Last page', root_path(page: @pagination['pages']), class: 'font-bold' %>
+        <% else %>
+            <div></div>
+            <div></div>
+        <% end %>
+    </div>
+<% end %>
