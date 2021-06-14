@@ -1,0 +1,43 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "db/schema.rb"
+    - "db/migrate/*.rb"
+    - ".bundle/**/*"
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "**/config/**/*"
+    - "node_modules/**/*"
+  TargetRubyVersion: 3.0
+
+Rails:
+  Enabled: true
+
+Layout/LineLength:
+  Max: 130
+
+Metrics/MethodLength:
+  Max: 30
+  Exclude:
+    - "db/**/*"
+
+Metrics/ClassLength:
+  Max: 200
+  Exclude:
+    - "db/**/*"
+        
+Metrics/BlockLength:
+  Max: 10
+  Exclude:
+    - "spec/**/*"
+
+Metrics/AbcSize:
+  Max: 32
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Metrics/CyclomaticComplexity:
+  Max: 10

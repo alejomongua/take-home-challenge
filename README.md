@@ -1,24 +1,9 @@
-# README
+# Video Listing application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is part of a take-home challenge proposed by [Zype](https://zype.com)
 
-Things you may want to cover:
+It lists all videos and restrict access to premium videos
 
-* Ruby version
+The video list is retrieved from an API, so it is not backed on this project's database.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The login system is also managed by the remote application, so users are not backed localy neither
