@@ -30,7 +30,7 @@
       </div>
     </nav>
     <% flash.each do |type, msg| %>
-      <div class='w-full p-4 bg-<%= type == 'alert' ? 'red' : 'green' %>-300'>
+      <div class='w-full p-4 <%= type == 'alert' ? 'bg-red-300' : 'bg-green-300' %>'>
         <div class='container mx-auto'>
           <%= msg %>
         </div>
