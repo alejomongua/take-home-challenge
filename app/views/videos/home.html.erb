@@ -5,8 +5,8 @@
 The coolest video list on the internet
 </h2>
 
-<% if @logged_in %>
-    <p> To do </p>
+<% if logged_in? %>
+    <p> You are logged in </p>
 <% else %>
     Please <a class="text-blue-500 visited:text-purple-600" href="#">log in</a> to access all the videos
 <% end %>

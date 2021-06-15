@@ -5,7 +5,8 @@ module VideosHelper
   PLAYER_KEY = Rails.application.credentials[:player_key]
 
   # Renders iframe tag with video player
-  def player(video, access_token = '')
+  def player(video)
+    access_token = session[:oauth_token]
     premium = video['subscription_required']
     query_string = premium ? "access_token=#{access_token}" : "api_key=#{PLAYER_KEY}"
     tag.iframe src: "https://player.zype.com/embed/#{video['_id']}.html?#{query_string}", class: 'w-96 h-56'

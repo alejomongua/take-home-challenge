@@ -2,10 +2,20 @@
     <%= @video['title'] %>
 </h1>
 
-<div class="w-96 mx-auto">
-    <%= player(@video) %>
-</div>
+<% if @entitled %>
+    <div class="w-96 mx-auto">
+        <%= player(@video) %>
+    </div>
+<% else %>
+    <div class='h-8'></div>
+    <p class="text-4xl text-center w-full h-24">
+        This video is premium, <a href="#" class="text-blue-500">please susbscribe to access this video</a>
+    </p>
+<% end %>
 
+<p>
+Created at: <%= @video['created_at'] %>
+</p>
 <% if @video['description'] %>
     <h3 class="text-lg font-bold">
         Description

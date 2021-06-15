@@ -3,17 +3,15 @@
         <div class='w-72'>
             <%= thumbnail(video) %>
         </div>
-        <p class='w-72 h-12 italic'><%= video['title'] %></p>
-        <p class='text-sm w-72 h-12 font-light'><%= truncate(video['description'], separator: ' ', length: 50) %></p>
+        <p class='w-72 h-24 italic'><%= video['title'] %></p>
+        <!-- p class='text-sm w-72 h-12 font-light'><%= truncate(video['description'], separator: ' ', length: 50) %></!-->
     <% end %>
-    <% if video['subscription_required'] %>
+    <% if !logged_in? && video['subscription_required'] %>
         <div class="z-10 inset-0 absolute flex flex-wrap justify-start items-start w-72 p-2">
             <p class="w-72 text-center bg-gray-200">
                 Subscription required
             </p>
-            <a href="#" class="w-72 text-center bg-gray-200 text-blue-500">
-                Log in to access
-            </a>
+            <%= link_to 'Log in to access', login_path(return_to: video_path(id: video['_id'])), class: 'w-72 text-center bg-gray-200 text-blue-500' %>
         </div>
     <% end %>
 </div>

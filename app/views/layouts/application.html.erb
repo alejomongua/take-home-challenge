@@ -18,13 +18,24 @@
         </div>
         <div class="block lg:flex lg:items-center lg:w-auto">
           <div>
-            <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0">
-              Login
-            </a>
+            <% if logged_in? %>
+              <%= form_with url: logout_path do |form| %>
+                <%= form.submit 'Log out', class: "inline-block bg-blue-500 text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0" %>
+              <% end %>
+            <% else %>
+              <%= link_to 'Log in', login_path, class: "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0" %>
+            <% end %>
           </div>
         </div>
       </div>
     </nav>
+    <% flash.each do |type, msg| %>
+      <div class='w-full p-4 bg-<%= type == 'alert' ? 'red' : 'green' %>-300'>
+        <div class='container mx-auto'>
+          <%= msg %>
+        </div>
+      </div>
+    <% end %>
     <div class='container mx-auto bg-blue-100 py-8 px-4'>
       <%= yield %>
     </div>
