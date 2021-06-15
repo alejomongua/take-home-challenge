@@ -22,18 +22,18 @@ RSpec.describe VideosHelper, type: :helper do
         '_id' => '56a7b83069702d2f830fd9b7',
         'subscription_required' => false
       }
-      player = helper.player(video)
+      player = helper.player(video, 'w-96 h-56')
       expect(player.is_a?(String)).to be_truthy
       expect(player).to include('https://player.zype.com/embed')
 
       # If it's a premium video it includes access token
       video['subscription_required'] = true
-      player = helper.player(video)
+      player = helper.player(video, 'w-96 h-56')
       expect(player).to include("access_token=#{access_token}")
 
       # If it isn't a premium video it includes api_key
       video['subscription_required'] = false
-      player = helper.player(video)
+      player = helper.player(video, 'w-96 h-56')
       expect(player).to include('api_key=')
     end
   end
