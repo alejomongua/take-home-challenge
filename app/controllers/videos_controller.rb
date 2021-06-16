@@ -82,8 +82,9 @@ class VideosController < ApplicationController
 
   # Validating if a consumer is entitled to play a video
   def entitled?(video_id)
-    access_token = session[:oauth_token]
-    url = URI("#{ROOT_API_URL}/#{video_id}/entitled?access_token=#{access_token}")
+    return false if session[:oauth_token].nil?
+
+    url = URI("#{ROOT_API_URL}/#{video_id}/entitled?access_token=#{session[:oauth_token]}")
 
     raw_response = make_request(url)
 

@@ -61,6 +61,7 @@ class AuthController < ApplicationController
     else
       # If there is something wrong, log it, maybe the token is expired
       Rails.logger.info("Error requesting to API: [logout] => #{raw_response.read_body}")
+      flash.notice = 'Logged out'
     end
 
     # Redirect to root path

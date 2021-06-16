@@ -2,7 +2,7 @@
     <%= @video['title'] %>
 </h1>
 
-<% if @entitled %>
+<% if @entitled || (!logged_in? && !@video['subscription_required'])  %>
     <div class="w-96 mx-auto">
         <%= player(@video, 'w-96 h-56') %>
     </div>
